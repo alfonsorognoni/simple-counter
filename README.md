@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Description
-This project is an introduction to react.js 
+This project is an introduction to react.js <br>
 It's just a simple counter
 
 ## Available Scripts
