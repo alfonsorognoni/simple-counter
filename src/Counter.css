@@ -1,0 +1,29 @@
+.counter {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 100px 50px;
+    max-width: 60vw;
+    margin: 4vh auto;
+}
+
+.counter-display {
+    grid-column: 1 / 5;
+    color: white;
+    font-size: calc(10px + 10vmin);
+}
+.counter-button-container {
+    grid-column: 2 / 3;
+
+}
+.counter-button-container ~ .counter-button-container {
+    grid-column: 3 / 4;
+}
+
+.counter-button {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: calc(10px + 4vmin);
+    outline: none;
+    cursor: pointer;
+}
