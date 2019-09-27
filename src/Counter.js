@@ -8,26 +8,39 @@ class Counter extends React.Component {
         this.state = {
             counter: 0
         }
+        this.updateCounter = this.updateCounter.bind(this);
     }
 
-    substract() {
-        this.setState((state) => {
-            return (state.counter > 0) ? {counter: state.counter-1} : {counter: state.counter};
-        });
+    onlyIntegerNumber(value) {
+        const re = /^[0-9\b]+$/;
+        return re.test(value);
     }
 
-    add() {
-        this.setState((state) => {
-            return {counter: state.counter+1};
-        });
+    updateCounter(event) {
+        if(event.type === 'change') {
+            if (this.onlyIntegerNumber(event.target.value)) {
+                this.setState({counter: event.target.value});
+            }
+        } else {
+            if(event.target.textContent === '+') {
+                this.setState((state) => {
+                    return {counter: parseFloat(state.counter)+1};
+                });
+            } else {
+                this.setState((state) => {
+                    return (state.counter > 0) ? {counter: parseFloat(state.counter)-1} : {counter: state.counter};
+                });
+            }
+        }
+        event.preventDefault();
     }
 
     render() {
         return (
             <div className="counter">
-                <div className="counter-display">{this.state.counter}</div>
-                <Button className="counter-button-container" onClick={() => this.substract()} icon="-" />
-                <Button className="counter-button-container" onClick={() => this.add()} icon="+" />
+                <input type="text" onChange={this.updateCounter} className="counter-display" value={this.state.counter} />
+                <Button className="counter-button-container" onClick={this.updateCounter} icon="-" />
+                <Button className="counter-button-container" onClick={this.updateCounter} icon="+" />
             </div>
         )
     }
