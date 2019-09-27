@@ -1,5 +1,6 @@
 import React from 'react';
 import './Counter.css';
+import Button from './Button';
 
 class Counter extends React.Component {
     constructor(props) {
@@ -11,26 +12,22 @@ class Counter extends React.Component {
 
     substract() {
         this.setState((state) => {
-            return {counter: state.counter-1}
-        })
+            return (state.counter > 0) ? {counter: state.counter-1} : {counter: state.counter};
+        });
     }
 
     add() {
         this.setState((state) => {
-            return {counter: state.counter+1}
-        })
+            return {counter: state.counter+1};
+        });
     }
 
     render() {
         return (
             <div className="counter">
                 <div className="counter-display">{this.state.counter}</div>
-                <div className="counter-button-container">
-                    <button className="counter-button" onClick={() => this.substract()}>-</button>
-                </div>
-                <div className="counter-button-container">
-                    <button className="counter-button" onClick={() => this.add()}>+</button>
-                </div>
+                <Button className="counter-button-container" onClick={() => this.substract()} icon="-" />
+                <Button className="counter-button-container" onClick={() => this.add()} icon="+" />
             </div>
         )
     }

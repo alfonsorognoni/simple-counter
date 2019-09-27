@@ -18,12 +18,3 @@
 .counter-button-container ~ .counter-button-container {
     grid-column: 3 / 4;
 }
-
-.counter-button {
-    border: none;
-    background: transparent;
-    color: white;
-    font-size: calc(10px + 4vmin);
-    outline: none;
-    cursor: pointer;
-}
